@@ -1,5 +1,5 @@
 <h1>Search Results</h1>
-<%= partial :search_form %>
+<%= partial_scheduler :search_form %>
 <hr>
 <% delayed = @jobs.select { |j| j['where_at'] == 'delayed' } %>
 <h1>Delayed jobs</h1>
