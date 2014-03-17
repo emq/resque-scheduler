@@ -87,6 +87,12 @@ module ResqueScheduler
             return true if Resque.schedule[name]['rails_env'].nil?
             Resque.schedule[name]['rails_env'] == Resque::Scheduler.env
           end
+
+          def partial_scheduler(template)
+            dir = File.dirname(File.expand_path(__FILE__))
+            file = "#{dir}/server/views/#{template}.erb"
+            erb(File.read(file))
+          end
         end
 
         get "/schedule" do
